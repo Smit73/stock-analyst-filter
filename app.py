@@ -77,7 +77,12 @@ st.dataframe(
         "Forward_PE": st.column_config.NumberColumn("Forward P/E", format="%.1f"),
         "Sector": "Sector",
         "Rating": "Rating",
-        "Num_Analysts": "Analysts"
+        "Num_Analysts": "Analysts",
+        "Strong_Buy": st.column_config.NumberColumn("Strong Buy", format="%d 🟢"),
+        "Buy": st.column_config.NumberColumn("Buy", format="%d 🟢"),
+        "Hold": st.column_config.NumberColumn("Hold", format="%d 🟡"),
+        "Sell": st.column_config.NumberColumn("Sell", format="%d 🔴"),
+        "Strong_Sell": st.column_config.NumberColumn("Strong Sell", format="%d 🔴"),
     },
     use_container_width=True,
     hide_index=True
