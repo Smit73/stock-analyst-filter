@@ -13,7 +13,6 @@ except FileNotFoundError:
 
 # 2. Sidebar Filters
 st.sidebar.header("Filter Options")
-min_div = st.sidebar.number_input("Minimum Dividend Yield (%)", value=0.0)
 
 # Filter: Sector (New)
 available_sectors = sorted(df['Sector'].dropna().unique())
@@ -36,7 +35,7 @@ min_upside = st.sidebar.number_input(
     "Minimum Upside Potential (%)", 
     value=0.0
 )
-
+min_div = st.sidebar.number_input("Minimum Dividend Yield (%)", value=0.0)
 # Filter: Rating
 rating_filter = st.sidebar.multiselect(
     "Filter by Rating Label",
