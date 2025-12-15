@@ -13,6 +13,7 @@ except FileNotFoundError:
 
 # 2. Sidebar Filters
 st.sidebar.header("Filter Options")
+min_div = st.sidebar.number_input("Minimum Dividend Yield (%)", value=0.0)
 
 # Filter: Sector (New)
 available_sectors = sorted(df['Sector'].dropna().unique())
@@ -27,7 +28,7 @@ min_analysts = st.sidebar.slider(
     "Minimum No. of Analysts", 
     min_value=0, 
     max_value=int(df['Num_Analysts'].max()), 
-    value=5
+    value=0
 )
 
 # Filter: Upside Potential
@@ -47,6 +48,7 @@ rating_filter = st.sidebar.multiselect(
 filtered_df = df[
     (df['Num_Analysts'] >= min_analysts) &
     (df['Upside_Potential'] >= min_upside) &
+    (df['Dividend_Yield'] >= min_div) &
     (df['Rating'].isin(rating_filter)) &
     (df['Sector'].isin(selected_sectors))
 ]
@@ -83,6 +85,7 @@ st.dataframe(
         "Hold": st.column_config.NumberColumn("Hold", format="%d 🟡"),
         "Sell": st.column_config.NumberColumn("Sell", format="%d 🔴"),
         "Strong_Sell": st.column_config.NumberColumn("Strong Sell", format="%d 🔴"),
+        "Dividend_Yield": st.column_config.NumberColumn("Div Yield", format="%.2f %%"),
     },
     use_container_width=True,
     hide_index=True
