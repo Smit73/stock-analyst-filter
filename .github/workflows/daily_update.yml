@@ -5,7 +5,7 @@ on:
   schedule:
     # This acts as a cron timer.
     # "0 15 * * *" means (Runs at 11:00 PM UTC / 6:00 PM EST)
-    - cron: '0 23 * * *' 
+    - cron: '0 20 * * *' 
   # This allows us to click a "Run Now" button manually for testing
   workflow_dispatch:
 
