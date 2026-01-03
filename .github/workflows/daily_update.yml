@@ -5,7 +5,7 @@ on:
   schedule:
     # This acts as a cron timer.
     # "0 15 * * *" means (Runs at 11:00 PM UTC / 6:00 PM EST)
-    - cron: '0 20 * * *' 
+    - cron: '0 21 * * *' 
   # This allows us to click a "Run Now" button manually for testing
   workflow_dispatch:
 
@@ -42,5 +42,5 @@ jobs:
         git config --global user.name "GitHub Actions Bot"
         git config --global user.email "actions@github.com"
         git add stock_data.csv
-        git commit -m "Auto-update stock data [skip ci]" || exit 0
+        git commit -m "Auto-update stock data" || exit 0
         git push
