@@ -5,9 +5,23 @@ import pandas as pd
 st.set_page_config(page_title="Analyst Upside Finder", layout="wide")
 st.title("📈 Stock Analyst Upside Finder")
 
-try:
-    df = pd.read_csv("stock_data.csv")
-except FileNotFoundError:
+# NEW: Load Data Function with Caching & Clear Logic
+@st.cache_data(ttl="2h") # Cache data for 2 hours automatically
+def load_data():
+    try:
+        # Read the CSV
+        return pd.read_csv("stock_data.csv")
+    except FileNotFoundError:
+        return None
+
+# Sidebar "Reset" Button
+if st.sidebar.button("🔄 Refresh Data"):
+    st.cache_data.clear() # Wipes the memory
+    st.rerun() # Restarts the app instantly
+
+df = load_data() # Use the function instead of direct pd.read_csv
+
+if df is None:
     st.error("Data file not found. Please run 'fetch_data.py' first!")
     st.stop()
 
