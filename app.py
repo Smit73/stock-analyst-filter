@@ -3,7 +3,7 @@ import pandas as pd
 
 # 1. Load Data
 st.set_page_config(page_title="Analyst Upside Finder", layout="wide")
-st.title("📈 Stock Analyst Upside Finder")
+st.title("Stock Analyst Upside Finder")
 
 # NEW: Load Data Function with Caching & Clear Logic
 @st.cache_data(ttl="2h") # Cache data for 2 hours automatically
