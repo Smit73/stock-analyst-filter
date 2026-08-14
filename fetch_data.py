@@ -53,7 +53,7 @@ def get_nasdaq100_tickers():
 
 def get_russell1000_tickers():
     """Scrapes the Russell 1000 (Top 1000 US Companies)"""
-    url = "https://en.wikipedia.org/wiki/Russell_1000_Index"
+    url = "https://en.wikipedia.org/wiki/List_of_Russell_1000_companies"
     headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
     try:
         response = requests.get(url, headers=headers)
